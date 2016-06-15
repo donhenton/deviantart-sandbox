@@ -8,4 +8,4 @@ ReactDOM.render(
     
         <Main />
    
-  , document.querySelector('#main'));
+  , document.querySelector('#appLocation'));

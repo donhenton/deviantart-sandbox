@@ -42,7 +42,7 @@ var targetLocation = './target/';
 var pageURL = 'http://localhost:8080';
 
 var SASS_FILES = './src/sass/**/*.scss';
-var WATCH_JS = ['./src/html/js/**/*.js']; //used to watch non react js source
+//var WATCH_JS = ['./src/html/js/**/*.js']; //used to watch non react js source
 var WATCH_REACT_JS = ['./src/react/**/*.js']; //used to watch non react js source
 var MAIN_HTML_FILE = ['./src/html/index.html','./src/html/cssdemo.html'];
 
@@ -62,17 +62,12 @@ function Bundle() {
             .on('error', notify);
 }
 
-gulp.task('copy-my-js', function () {
-//copy other non reactg js files that may be modified
-    return gulp.src(WATCH_JS).pipe(gulp.dest(targetLocation+"js"))
-            .on('finish', function ( ) {
-                gutil.log("processing change in my js");
-                livereload.reload(pageURL);
-               // cb();
-            });
- 
-
-});
+//gulp.task('copy-my-js', function () {
+////copy other non reactg js files that may be modified
+//    return gulp.src(WATCH_JS).pipe(gulp.dest(targetLocation+"js"))
+// 
+//
+//});
 
 gulp.task('copy-html', function () {
 
@@ -80,11 +75,7 @@ gulp.task('copy-html', function () {
     // base allows to copy the folders above the file
     // return gulp.src(MAIN_HTML_FILE,{'cwd': './src/html','base':'./..'} )
     return gulp.src(MAIN_HTML_FILE).pipe(gulp.dest(targetLocation))
-            .on('finish', function ( ) {
-                gutil.log("processing change in html");
-                livereload.reload(pageURL);
-               // cb();
-            });
+           
  
 
 });
@@ -101,10 +92,7 @@ gulp.task('build', function () {
             .pipe(gulpif(argv.production, streamify(uglify())))
        //     .pipe(gulpif(argv.production, rename({suffix: '.min'})))
             .pipe(gulp.dest(targetLocation+'js'))
-            .on('finish', function ( ) {
-                gutil.log("build bundle end");
-                 livereload.reload(pageURL);
-            });
+             
     ;
 });
 var sassProcess =
@@ -148,20 +136,34 @@ gulp.task('watch', function () {
 
     });
 
-    watch(WATCH_JS, function (events, done) {
-
-        gulp.start('copy-my-js');
-    });
+//    watch(WATCH_JS, function (events, done) {
+//
+//        gulp.start('copy-my-js').on('finish', function ( ) {
+//                gutil.log("processing change in my css");
+//                livereload.reload(pageURL);
+//               // cb();
+//            });;
+//    });
     
     watch(WATCH_REACT_JS, function (events, done) {
 
-        gulp.start('build');
+        gulp.start('build')
+            .on('finish', function ( ) {
+                gutil.log("processing change in my build");
+                livereload.reload(pageURL);
+               // cb();
+            });;
     });
 
 
     watch(MAIN_HTML_FILE, function (events, done) {
         gutil.log("starting html change");
-        gulp.start('copy-html');
+        gulp.start('copy-html')
+            .on('finish', function ( ) {
+                gutil.log("processing change in my html");
+                livereload.reload(pageURL);
+               // cb();
+            });;
     });
 
 });
@@ -182,4 +184,4 @@ gulp.task('serve', function (done) {
             }));
 });
 gulp.task('release', gulpsync.sync(['clean','build', 'sass']));
-gulp.task('dev', gulpsync.sync(['clean', 'build', 'sass','copy-assets', 'copy-my-js','copy-html', 'watch', 'serve']));
+gulp.task('dev',     gulpsync.sync(['clean','build', 'sass','copy-assets', 'copy-html', 'watch', 'serve']));
