@@ -1,0 +1,106 @@
+@import "components/reset";
+@import "components/typography";
+@import "components/modular";
+@import "components/myMenu";
+@import "components/tables";
+@import "components/tableHeader";
+@import "components/buttons";
+/* hello  sssddss */
+ 
+body
+{
+    z-index: 0;
+}
+
+#explainDialog 
+{
+     
+    margin: 5px;
+    p , div
+    {
+        margin: 5px 0px;
+    }
+    
+}
+ 
+.componentMarker
+{
+    border: thin dashed $green-color;
+    padding: 10px;
+}
+
+section#pageContainer
+{
+    margin: 0px;
+    font-size: 16px;
+    font-weight: Normal;
+    color: #333333;
+    //, Helvetica, Arial, Sans-Serif, Normal, 14px, 20px, #333333;
+
+    .logo
+    {
+        font-family: 'Roboto, Arial, Sans-Serif' ;
+        font-size: 25px;
+        font-style: italic;
+        margin-left: 10px;
+        vertical-align: central;
+        float: left;
+        margin-top: 10px;
+        display: inline-table;
+        a{
+            text-decoration: none;
+            &:visited, &:link
+                {
+                color: white;
+            }
+
+        }
+
+    }
+
+    header
+    {
+        background-color: $blue-color;
+        color: white;
+        height: 90px;
+        width: 100%;
+
+    }
+    section#main
+    {
+
+        width: 1200px;
+
+        border: 5px double $blue-color;
+        margin: 10px auto 5px auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        clear: both;
+
+
+    }
+
+    footer
+    {
+        text-align:center;
+
+
+    }
+
+
+
+}//end pageContainer
+
+.explainDialog.ui-dialog 
+{
+    
+    .ui-dialog-titlebar,
+    .ui-dialog-buttonpane .ui-dialog-buttonset
+    {
+     float: none;
+     text-align:center;
+     }
+     
+}
+ 

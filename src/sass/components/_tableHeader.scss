@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 6, 2016, 9:18:08 AM
+    Author     : dhenton
+*/
+$default-border:   4px #08c double;
+//$blue-color: #08c;
+
+
+.nameItem
+        {
+            width: 80%;
+            text-align: left;
+
+        }
+        .cityItem
+        {
+            width: 20%;
+            text-align: left ;
+
+        }
+        .stateItem
+        {
+            width: 5%;
+            text-align:left;
+        }
+        .zipCodeItem
+        {
+            width: 10%;
+            text-align:center;
+        }
+
+        .versionItem
+        {
+            width: 10%;
+            text-align:center;
+        }
+        .actionItems
+        {
+            width: 10%;
+            text-align:center;
+            .btn
+            {
+                margin: 5px;
+            }
+        }
+
+.tHeadContainer, .tBodyContainer
+{
+     
+  
+
+    th
+    {
+        background-color: $blue-color;
+        color: white;
+        border-right: thin solid white;
+        padding-bottom: 5px;
+        text-align:center;
+    }
+
+    table
+    {
+        width:1067px;
+        border-collapse: collapse;
+        table-layout: fixed;
+        empty-cells: show;
+    }
+    td
+    {
+        padding-left: 2px;
+        padding-bottom: 2px;
+        &.alphaItem
+        {
+            color: red;
+            font-weight: bolder;
+            padding: 5px 5px;
+        }
+    }
+
+    tr.restaurantRow
+    {
+        cursor: pointer;
+         
+    }
+
+}
+
+.tHeadContainer
+{
+    margin-left: 3px;
+}
+.tBodyContainer
+{
+
+    height: 125px;
+    overflow-y: auto;
+    width:1090px;
+    border: $default-border;
+
+    td
+    {
+        border: thin solid $blue-color;
+        margin: 5px;
+
+    }
+
+
+
+
+    tr.highLighted 
+    {
+        .nameItem , .cityItem  , .stateItem  , .versionItem, .zipCodeItem
+        { 
+            background-color: lightblue;
+            color: white;
+        }
+
+
+
+    }
+
+}
